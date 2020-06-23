@@ -1,7 +1,4 @@
 
-import timeit
-from warp_img import geo
-from test_1 import exportImgAPI
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse, FileResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -12,8 +9,11 @@ import base64
 import io
 import numpy as np
 import sys
-sys.path.insert(0, 'E:\\KLTN\\cfeapi\\Updates\\face_parsing')
-sys.path.insert(1, 'E:\\KLTN\\cfeapi\\Updates\\foa')
+sys.path.insert(0, '\\home\\KLTN_TheFaceOfArtFaceParsing\\Updates\\face_parsing')
+sys.path.insert(1, '\\home\\KLTN_TheFaceOfArtFaceParsing\\Updates\\foa')
+from test_1 import exportImgAPI
+from warp_img import geo
+import timeit
 # Create your views here.
 
 

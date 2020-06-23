@@ -26,7 +26,7 @@ SECRET_KEY = '%1kgg*k9c^%5=&@nfx3gvqd)g(j(6q92*a9p9defgs+c5z2uf+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.188.49.138','10.0.0.4']
+ALLOWED_HOSTS = ['52.188.49.138','10.0.0.4', 'thienapp.eastus.cloudapp.azure.com']
 
 
 # Application definition

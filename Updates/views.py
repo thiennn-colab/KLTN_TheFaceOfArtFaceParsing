@@ -9,8 +9,8 @@ import base64
 import io
 import numpy as np
 import sys
-sys.path.insert(0, '\\home\\KLTN_TheFaceOfArtFaceParsing\\Updates\\face_parsing')
-sys.path.insert(1, '\\home\\KLTN_TheFaceOfArtFaceParsing\\Updates\\foa')
+sys.path.insert(0, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing')
+sys.path.insert(1, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/foa')
 from test_1 import exportImgAPI
 from warp_img import geo
 import timeit

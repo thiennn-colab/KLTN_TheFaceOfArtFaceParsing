@@ -35,6 +35,7 @@ def alpha_blending(src, mask):
 
 def applyMask(src, mask):
     mask_blur = cv2.GaussianBlur(mask, (31, 31), 0)
+    mask_blur = mask_blur.astype('float16')
     return [src * (mask_blur / 255), mask_blur]
 # parsing artistic image to get the textures
 

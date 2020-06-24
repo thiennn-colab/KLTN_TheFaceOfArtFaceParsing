@@ -37,7 +37,9 @@ def index(request):
         input_img, style, cp='79999_iter.pth')
     stop = timeit.default_timer()
     print('Time proccessing: ', stop - start)
-
+    cv2.imshow('asd', output_img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
     start = timeit.default_timer()
     cv2.imwrite('result.jpg', output_img[:, :, ::-1])

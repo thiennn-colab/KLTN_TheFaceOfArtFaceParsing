@@ -146,7 +146,7 @@ def vis_parsing_maps(im, style, parsing_anno, stride, save_im=False, save_path='
     mask1 = lips_eyes
     src1 = im.copy().astype('uint8')[:, :, ::-1]
 
-    # mask1 = mask1/255
+    mask1 = mask1/255
     # dst = src1 * mask1 + src2 * (1 - mask1)
     dst = src1 * mask1
 

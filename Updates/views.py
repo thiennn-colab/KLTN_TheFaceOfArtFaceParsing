@@ -10,9 +10,9 @@ import io
 import numpy as np
 import sys
 sys.path.insert(0, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing')
-sys.path.insert(1, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/foa')
+sys.path.insert(1, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/StyleTransfer')
 from test_1 import exportImgAPI
-from warp_img import geo
+from test_on_image import exportStyleTransfer
 import timeit
 # Create your views here.
 
@@ -59,19 +59,19 @@ def foa(request):
     # print(body['image'])
     input_img = stringToRGB(body['image'])
     style = body['style']
+    cv2.imwrite('input.jpg', input_img)
     # # print(sys.path[0])
     stop = timeit.default_timer()
     print('Time preproccessing: ', stop - start)
 
     start = timeit.default_timer()
-    output_img = geo(input_img)
+    exportStyleTransfer("/home/KLTN_TheFaceOfArtFaceParsing/input.jpg")
     stop = timeit.default_timer()
     print('Time proccessing: ', stop - start)
 
     # # output_img = cv2.imread('E:\\KLTN\\cfeapi\\Updates\\face_parsing\\textures\\btexture6.jpg')
     # # print(type(output_img))
     start = timeit.default_timer()
-    cv2.imwrite('result.jpg', output_img[:, :, ::-1])
     with open('result.jpg', "rb") as image_file:
         image_data = base64.b64encode(image_file.read()).decode('utf-8')
     stop = timeit.default_timer()

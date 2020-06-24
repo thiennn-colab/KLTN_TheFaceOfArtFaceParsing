@@ -61,13 +61,13 @@ def geo(image):
     # cv2.imwrite(os.path.join(out_path, name + '.png'), image*255)
     return image_geo
 
-# img_detected = 'face/'
-# path = 'face_2.png'
-# img = cv2.imread(os.path.join(img_detected, path))
+
+img = cv2.imread("/home/KLTN_TheFaceOfArtFaceParsing/input.jpg")
 
 
 # start_time = time.time()
-# image = geo(img)
+image = geo(img)
+cv2.imwrite("/home/KLTN_TheFaceOfArtFaceParsing/input.jpg", image)
 # cv2.imshow('asdsad', image)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()

@@ -65,6 +65,7 @@ def foa(request):
     stop = timeit.default_timer()
     print('Time preproccessing: ', stop - start)
 
+    
     start = timeit.default_timer()
     input_img = geo(input_img)
     cv2.imwrite('input.jpg', input_img)

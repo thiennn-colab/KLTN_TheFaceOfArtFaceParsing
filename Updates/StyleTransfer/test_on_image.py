@@ -27,4 +27,4 @@ def exportStyleTransfer(image_path, checkpoint_model = '/home/KLTN_TheFaceOfArtF
         stylized_image = denormalize(transformer(image_tensor)).cpu()
 
     # Save image
-    save_image(stylized_image,'/home/KLTN_TheFaceOfArtFaceParsing/Updates/result.jpg')
+    save_image(stylized_image,'/home/KLTN_TheFaceOfArtFaceParsing/result.jpg')

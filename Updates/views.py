@@ -25,25 +25,22 @@ def stringToRGB(base64_string):
 
 @csrf_exempt
 def index(request):
-    # start = timeit.default_timer()
-    # body = json.JSONDecoder().decode(request.body.decode('utf-8'))
-    # # print(body['image'])
-    # input_img = stringToRGB(body['image'])
-    # style = body['style']
-    # # # print(sys.path[0])
-    # stop = timeit.default_timer()
-    # print('Time preproccessing: ', stop - start)
-
-    # start = timeit.default_timer()
-    # output_img = exportImgAPI(
-    #     input_img, style, cp='79999_iter.pth')
-    # stop = timeit.default_timer()
-    # print('Time proccessing: ', stop - start)
-
-    # # # output_img = cv2.imread('E:\\KLTN\\cfeapi\\Updates\\face_parsing\\textures\\btexture6.jpg')
-    # # # print(type(output_img))
     start = timeit.default_timer()
-    # cv2.imwrite('result.jpg', output_img[:, :, ::-1])
+    body = json.JSONDecoder().decode(request.body.decode('utf-8'))
+    input_img = stringToRGB(body['image'])
+    style = body['style']
+    stop = timeit.default_timer()
+    print('Time preproccessing: ', stop - start)
+
+    start = timeit.default_timer()
+    output_img = exportImgAPI(
+        input_img, style, cp='79999_iter.pth')
+    stop = timeit.default_timer()
+    print('Time proccessing: ', stop - start)
+
+
+    start = timeit.default_timer()
+    cv2.imwrite('result.jpg', output_img[:, :, ::-1])
     with open('result.jpg', "rb") as image_file:
         image_data = base64.b64encode(image_file.read()).decode('utf-8')
     stop = timeit.default_timer()

@@ -214,13 +214,13 @@ def evaluate(respth='./res/test_res', dspth='./data', cp='model_final_diss.pth')
             print('Time: ', stop - start)
 
 
-def exportImgAPI(img, style, dspth='E:\\KLTN\\cfeapi\\Updates\\face_parsing\\test-img', cp='model_final_diss.pth'):
+def exportImgAPI(img, style, dspth='/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing/test-img', cp='model_final_diss.pth'):
     # img = Image.open(osp.join(dspth, image_path))
     n_classes = 19
     net = BiSeNet(n_classes=n_classes)
     net.cuda()
     save_pth = osp.join(
-        'E:\\KLTN\\cfeapi\\Updates\\face_parsing\\res\\cp', cp)
+        '/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing/res/cp', cp)
     net.load_state_dict(torch.load(
         save_pth, map_location='cpu'))
     net.eval()
@@ -246,6 +246,6 @@ def exportImgAPI(img, style, dspth='E:\\KLTN\\cfeapi\\Updates\\face_parsing\\tes
                                 save_path='')
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    evaluate(dspth='./test-img', cp='79999_iter.pth')
+#     evaluate(dspth='./test-img', cp='79999_iter.pth')

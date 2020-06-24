@@ -8,7 +8,7 @@ import tqdm
 from torchvision.utils import save_image
 from PIL import Image
 
-def exportStyleTransfer(image_path, checkpoint_model = '/content/drive/My Drive/StyleTransfer/models/124_4495.pth'):
+def exportStyleTransfer(image_path, checkpoint_model = '/home/KLTN_TheFaceOfArtFaceParsing/Updates/StyleTransfer/models/124_4495.pth'):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     transform = style_transform()

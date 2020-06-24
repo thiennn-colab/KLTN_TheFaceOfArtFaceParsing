@@ -11,6 +11,7 @@ import numpy as np
 import sys
 sys.path.insert(0, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing')
 sys.path.insert(1, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/StyleTransfer')
+sys.path.insert(2, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp')
 from test_1 import exportImgAPI
 from test_on_image import exportStyleTransfer
 import timeit
@@ -59,12 +60,13 @@ def foa(request):
     # print(body['image'])
     input_img = stringToRGB(body['image'])
     style = body['style']
-    cv2.imwrite('input.jpg', input_img)
     # # print(sys.path[0])
     stop = timeit.default_timer()
     print('Time preproccessing: ', stop - start)
 
     start = timeit.default_timer()
+    input_img = geo(input_img)
+    cv2.imwrite('input.jpg', input_img)
     exportStyleTransfer("/home/KLTN_TheFaceOfArtFaceParsing/input.jpg")
     stop = timeit.default_timer()
     print('Time proccessing: ', stop - start)

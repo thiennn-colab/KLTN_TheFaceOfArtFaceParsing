@@ -114,45 +114,44 @@ def vis_parsing_maps(im, style, parsing_anno, stride, save_im=False, save_path='
     vis_im = cv2.addWeighted(cv2.cvtColor(
         vis_im, cv2.COLOR_RGB2BGR), 0.4, vis_parsing_anno_color, 0.6, 0)
 
-    # # src2 processing
-    # src2_mask = np.ones_like(im).astype('uint8')*200
-    # src2 = texture.copy().astype('uint8')
-    # for pi in [1, 10]:
-    #     index = np.where(vis_parsing_anno == pi)
-    #     src2_mask[index[0], index[1], :] = 255
-    #     src2[index[0], index[1], :] = vis_im[index[0], index[1], :]
+    # src2 processing
+    src2_mask = np.ones_like(im).astype('uint8')*200
+    src2 = texture.copy().astype('uint8')
+    for pi in [1, 10]:
+        index = np.where(vis_parsing_anno == pi)
+        src2_mask[index[0], index[1], :] = 255
+        src2[index[0], index[1], :] = vis_im[index[0], index[1], :]
 
-    # cv2.imwrite(save_path[:-4]+"_src2_texture.jpg", src2,
-    #             [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+    cv2.imwrite(save_path[:-4]+"_src2_texture.jpg", src2,
+                [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
-    # src2, src2_mask = applyMask(src2, src2_mask)
+    src2, src2_mask = applyMask(src2, src2_mask)
 
-    # # first mask
-    # first_mask = im.copy().astype("uint8")[:, :, ::-1]
-    # # first_mask *= 255
-    # for pi in [1, 10, 2, 3, 17]:
-    #     index = np.where(vis_parsing_anno == pi)
-    #     first_mask[index[0], index[1], :] = vis_im[index[0], index[1], :]
-    # for pi in [4, 5, 7, 8, 9, 11, 12, 13, 17]:
-    #     index = np.where(vis_parsing_anno == pi)
-    #     first_mask[index[0], index[1], :] = im[:,
-    #                                            :, :: -1][index[0], index[1], :]
+    # first mask
+    first_mask = im.copy().astype("uint8")[:, :, ::-1]
+    # first_mask *= 255
+    for pi in [1, 10, 2, 3, 17]:
+        index = np.where(vis_parsing_anno == pi)
+        first_mask[index[0], index[1], :] = vis_im[index[0], index[1], :]
+    for pi in [4, 5, 7, 8, 9, 11, 12, 13, 17]:
+        index = np.where(vis_parsing_anno == pi)
+        first_mask[index[0], index[1], :] = im[:,
+                                               :, :: -1][index[0], index[1], :]
 
-    # vis_im = cv2.addWeighted(cv2.cvtColor(
-    #     vis_im, cv2.COLOR_RGB2BGR), 0, first_mask, 1, 0)
+    vis_im = cv2.addWeighted(cv2.cvtColor(
+        vis_im, cv2.COLOR_RGB2BGR), 0, first_mask, 1, 0)
 
-    # lips_eyes = alpha_blending(vis_im, lips_eyes)
-    # print(lips_eyes.shape)
-    # mask1 = lips_eyes
-    # src1 = im.copy().astype('uint8')[:, :, ::-1]
+    lips_eyes = alpha_blending(vis_im, lips_eyes)
+    print(lips_eyes.shape)
+    mask1 = lips_eyes
+    src1 = im.copy().astype('uint8')[:, :, ::-1]
 
-    # mask1 = mask1/255
-    # dst = src1 * mask1 + src2 * (1 - mask1)
+    mask1 = float(mask1/255)
+    dst = int(src1 * mask1 + src2 * (1 - mask1))
 
-    # # lips_eyes_applyMask = applyMask(lips_eyes)
-    # result = vis_im.copy()
+    # lips_eyes_applyMask = applyMask(lips_eyes)
+    result = vis_im.copy()
     # result[lips_eyes != 0] = lips_eyes[lips_eyes != 0]
-    dst = vis_im
 
     # Save result or not
     if save_im:

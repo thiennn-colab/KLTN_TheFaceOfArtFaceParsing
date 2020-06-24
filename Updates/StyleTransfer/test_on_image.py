@@ -8,9 +8,10 @@ import tqdm
 from torchvision.utils import save_image
 from PIL import Image
 
-def exportStyleTransfer(image_path, checkpoint_model = '/home/KLTN_TheFaceOfArtFaceParsing/Updates/StyleTransfer/models/124_4495.pth'):
+def exportStyleTransfer(image_path, style):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
+    styles = ['31_4495.pth', '39_1081.pth', '44_1181.pth', '124_4495.pth', '133_4495.pth', 'cuphead_10000.pth', 'mosaic_10000.pth', 'starry_night_10000.pth']
+    checkpoint_model = '/home/KLTN_TheFaceOfArtFaceParsing/Updates/StyleTransfer/models/' + styles[style-1]
     transform = style_transform()
 
     # Define model and load model checkpoint

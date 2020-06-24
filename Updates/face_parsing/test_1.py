@@ -148,9 +148,9 @@ def vis_parsing_maps(im, style, parsing_anno, stride, save_im=False, save_path='
 
     mask1 = mask1.astype('float16')
     mask1 = mask1 / 255
-    src2 = src2.astype('float16')
-    dst = src1 * mask1 + src2 * (1 - mask1)
-    # dst = src1 * mask1
+    # src2 = src2.astype('float16')
+    # dst = src1 * mask1 + src2 * (1 - mask1)
+    dst = src2 * (1 - mask1)
     dst = dst.astype('uint8')
 
     # lips_eyes_applyMask = applyMask(lips_eyes)

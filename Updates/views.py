@@ -14,6 +14,7 @@ sys.path.insert(1, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/StyleTransfer')
 sys.path.insert(2, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp')
 from test_1 import exportImgAPI
 from test_on_image import exportStyleTransfer
+from warp_img import geo
 import timeit
 # Create your views here.
 

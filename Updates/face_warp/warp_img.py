@@ -46,12 +46,10 @@ def option_landmarks(landmarks):
     return np_a
 
 def geo(image):
-    out_dir = 'out_img_to_geo_1'
-    out_path = os.path.join('img\\', out_dir)
     img = image.copy()
     landmark_points_img = detect_landmark(img)
     lm = np.array(landmark_points_img)
-    landmark_points_art_img = load_landmark('img\\art\\'+ '9' + '.pts')
+    landmark_points_art_img = load_landmark('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/img/art/'+ '9' + '.pts')
     lma = np.array(landmark_points_art_img)
     # name = facialArr[numFace]+'_'+ artArr[num]
     # name = 'facial' + '_9'

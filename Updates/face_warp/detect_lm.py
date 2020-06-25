@@ -24,7 +24,8 @@ def detect_landmark(img):
             y = landmarks.part(n).y
             landmarks_points.append((y, x))
     cv2.imwrite('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/input/input.png', img)
-    mio.export_landmark_file(PointCloud(landmarks_points),'/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/input/input.pts', overwrite=True)
+    mio.export_landmark_file(PointCloud(landmarks_points), '/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/input/input.pts',
+                                                                                                                        overwrite=True)
 
 
 def center_margin_bb(bb, img_bounds, margin=0.25):
@@ -66,7 +67,7 @@ def save_image(img):
     if not os.path.exists(outdir):
         os.mkdir(outdir)
     imsave('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/output/input.png', im_pixels)
-    mio.export_landmark_file(img.landmarks['PTS'], '/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/output/input.pts')
+    mio.export_landmark_file(img.landmarks['PTS'], '/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/output/input.pts', overwrite=True)
 
 
 def crop_img(img):

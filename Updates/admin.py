@@ -1,6 +1,6 @@
-# from django.contrib import admin
-# from .models import Update
+from django.contrib import admin
+from .models import Update
 
-# # Register your models here.
+# Register your models here.
 
-# admin.site.register(Update)
+admin.site.register(Update)

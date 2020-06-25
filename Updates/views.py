@@ -66,11 +66,9 @@ def foa(request):
     stop = timeit.default_timer()
     print('Time preproccessing: ', stop - start)
 
-    os.system("sudo rm /home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/input/input.pts")
     start = timeit.default_timer()
     output_img = geo(input_img)
-    cv2.imwrite('result.jpg', output_img)
-    cv2.imwrite('input.jpg', input_img)
+    cv2.imwrite('input.jpg', output_img)
     exportStyleTransfer("/home/KLTN_TheFaceOfArtFaceParsing/input.jpg", style=style)
     stop = timeit.default_timer()
     print('Time proccessing: ', stop - start)

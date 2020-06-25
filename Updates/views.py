@@ -9,6 +9,7 @@ import base64
 import io
 import numpy as np
 import sys
+import os
 sys.path.insert(0, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing')
 sys.path.insert(1, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/StyleTransfer')
 sys.path.insert(2, '/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp')

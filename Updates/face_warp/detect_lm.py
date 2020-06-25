@@ -71,7 +71,7 @@ def save_image(img):
 
 def crop_img(img):
     detect_landmark(img)
-    out_image_list = mio.import_images('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/input/input.pts', verbose='true')
+    out_image_list = mio.import_images('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/input/input.png', verbose='true')
     image = crop_img_facial(out_image_list[0])
     save_image(image)
 

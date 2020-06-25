@@ -23,7 +23,7 @@ def detect_landmark(img):
             x = landmarks.part(n).x
             y = landmarks.part(n).y
             landmarks_points.append((y, x))
-    cv2.imwrite('input\\input.png', img)
+    cv2.imwrite('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/input/input.png', img)
     mio.export_landmark_file(PointCloud(landmarks_points),'/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/input/input.pts',
                      overwrite=True)
 

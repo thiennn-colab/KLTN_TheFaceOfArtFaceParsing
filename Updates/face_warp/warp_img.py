@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from skimage.transform import PiecewiseAffineTransform, warp
 import matplotlib.pyplot as plt 
-from detect_lm import detect_landmark 
+from detect_lm import detect_landmark, crop_img
 import time
 import os
 
@@ -47,29 +47,15 @@ def option_landmarks(landmarks):
 
 def geo(image):
     img = image.copy()
-    landmark_points_img = detect_landmark(img)
+    crop_img(img)
+    image = cv2.imread('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/output/input.png')
+    landmark_points_img = load_landmark('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/output/' + 'input' + '.pts')
     lm = np.array(landmark_points_img)
-    landmark_points_art_img = load_landmark('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/img/art/'+ '9' + '.pts')
+    landmark_points_art_img = load_landmark('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/img/art/'+ '32' + '.pts')
     lma = np.array(landmark_points_art_img)
-    # name = facialArr[numFace]+'_'+ artArr[num]
-    # name = 'facial' + '_9'
     landmark_art = option_landmarks(lma)
     landmark_face = option_landmarks(lm)
-    image_geo = img_geom(img, landmark_face, landmark_art)
-    # if os.path.exists(os.path.join('img/' + out_dir, name + '.png')):
-    #     continue
-    # cv2.imwrite(os.path.join(out_path, name + '.png'), image*255)
+    image_geo = img_geom(image, landmark_face, landmark_art)
+    image_geo*=255
+    image_geo = image_geo.astype('uint8')
     return image_geo
-
-
-# img = cv2.imread("/home/KLTN_TheFaceOfArtFaceParsing/input.jpg")
-
-
-# start_time = time.time()
-# image = geo(img)
-# cv2.imwrite("/home/KLTN_TheFaceOfArtFaceParsing/input.jpg", image)
-# cv2.imshow('asdsad', image)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
-# end_time = time.time()
-# print('total run-time: %f ms' % ((end_time - start_time)))

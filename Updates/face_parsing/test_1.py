@@ -66,7 +66,7 @@ def vis_parsing_textures(im, parsing_anno, stride, save_im=False, save_path='vis
     vis_parsing_anno_color = vis_parsing_anno_color.astype(np.uint8)
     # print(vis_parsing_anno_color.shape, vis_im.shape)
     vis_im = cv2.addWeighted(cv2.cvtColor(
-        vis_im, cv2.COLOR_RGB2BGR), 0.4, vis_parsing_anno_color, 0.6, 0)
+        vis_im, cv2.COLOR_RGB2BGR), 0.6, vis_parsing_anno_color, 0.4, 0)
 
     for pi in range(1, 2):
         index = np.where(vis_parsing_anno == pi)

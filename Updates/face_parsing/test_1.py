@@ -83,7 +83,6 @@ def vis_parsing_textures(im, parsing_anno, stride, save_im=False, save_path='vis
 
 def vis_parsing_maps(im, style, parsing_anno, stride, save_im=False, save_path='vis_results/parsing_map_on_im.jpg'):
 
-    _styleArr = ['btexture6.jpg','btexture7.jpg','btexture8.jpg','btexture9.jpg','gold.jpg','metal.jpg']
     style = int(style)
     im = np.array(im)
     vis_im = im.copy().astype(np.uint8)
@@ -96,7 +95,7 @@ def vis_parsing_maps(im, style, parsing_anno, stride, save_im=False, save_path='
     num_of_class = np.max(vis_parsing_anno)
 
     # texture_hair = getTexture('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing/textures/' + _styleArr[style], (512, 512))
-    texture = getTexture('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing/textures/btexture' + str(style), (512, 512))
+    texture = getTexture('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing/textures/btexture' + str(style) + '.jpg', (512, 512))
     lips_eyes = np.ones_like(im).astype(np.uint8)*255
     # skin 1, nose 10, upper_lip 12, lower-lip 13
     for pi in [1, 10]:

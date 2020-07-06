@@ -52,7 +52,7 @@ def geo(image, style):
     image = cv2.imread('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/output/input.png')
     landmark_points_img = load_landmark('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/output/' + 'input' + '.pts')
     lm = np.array(landmark_points_img)
-    landmark_points_art_img = load_landmark('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/img/art/'+ styles[style] + '.pts')
+    landmark_points_art_img = load_landmark('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/img/art/'+ styles[style-1] + '.pts')
     lma = np.array(landmark_points_art_img)
     landmark_art = option_landmarks(lma)
     landmark_face = option_landmarks(lm)

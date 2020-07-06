@@ -11,7 +11,7 @@ from PIL import Image
 def exportStyleTransfer(image_path, style):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     styles = ['9', '32', '51', '55', '56', '58', '108', '140', '150', '153', '154', '155', '156']
-    checkpoint_model = '/home/KLTN_TheFaceOfArtFaceParsing/Updates/StyleTransfer/models/' + styles[style] + '_4000.pth'
+    checkpoint_model = '/home/KLTN_TheFaceOfArtFaceParsing/Updates/StyleTransfer/models/' + styles[style-1] + '_4000.pth'
     transform = style_transform()
 
     # Define model and load model checkpoint

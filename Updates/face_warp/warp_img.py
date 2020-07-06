@@ -45,13 +45,14 @@ def option_landmarks(landmarks):
     np_a = np.append(landmarks[part_ids, :], np_array, axis = 0)
     return np_a
 
-def geo(image):
+def geo(image, style):
     img = image.copy()
+    styles = ['9', '32', '51', '55', '56', '58', '108', '140', '150', '153', '154', '155', '156']
     crop_img(img)
     image = cv2.imread('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/output/input.png')
     landmark_points_img = load_landmark('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/output/' + 'input' + '.pts')
     lm = np.array(landmark_points_img)
-    landmark_points_art_img = load_landmark('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/img/art/'+ '9' + '.pts')
+    landmark_points_art_img = load_landmark('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_warp/img/art/'+ styles[style] + '.pts')
     lma = np.array(landmark_points_art_img)
     landmark_art = option_landmarks(lma)
     landmark_face = option_landmarks(lm)

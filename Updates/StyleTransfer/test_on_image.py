@@ -10,8 +10,8 @@ from PIL import Image
 
 def exportStyleTransfer(image_path, style):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    styles = ['31_4495.pth', '39_1081.pth', '44_1181.pth', '124_4495.pth', '133_4495.pth', 'cuphead_10000.pth', 'mosaic_10000.pth', 'starry_night_10000.pth']
-    checkpoint_model = '/home/KLTN_TheFaceOfArtFaceParsing/Updates/StyleTransfer/models/' + styles[style-1]
+    styles = ['9', '32', '51', '55', '56', '58', '108', '140', '150', '153', '154', '155', '156']
+    checkpoint_model = '/home/KLTN_TheFaceOfArtFaceParsing/Updates/StyleTransfer/models/' + styles[style] + '_4000.pth'
     transform = style_transform()
 
     # Define model and load model checkpoint

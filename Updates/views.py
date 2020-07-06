@@ -67,7 +67,7 @@ def foa(request):
     print('Time preproccessing: ', stop - start)
 
     start = timeit.default_timer()
-    output_img = geo(input_img)
+    output_img = geo(input_img, style=style)
     cv2.imwrite('input.jpg', output_img)
     exportStyleTransfer("/home/KLTN_TheFaceOfArtFaceParsing/input.jpg", style=style)
     stop = timeit.default_timer()

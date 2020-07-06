@@ -95,8 +95,8 @@ def vis_parsing_maps(im, style, parsing_anno, stride, save_im=False, save_path='
 
     num_of_class = np.max(vis_parsing_anno)
 
-    texture_hair = getTexture('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing/textures/' + _styleArr[style], (512, 512))
-    texture = getTexture('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing/textures/' + _styleArr[style], (512, 512))
+    # texture_hair = getTexture('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing/textures/' + _styleArr[style], (512, 512))
+    texture = getTexture('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing/textures/btexture' + str(style), (512, 512))
     lips_eyes = np.ones_like(im).astype(np.uint8)*255
     # skin 1, nose 10, upper_lip 12, lower-lip 13
     for pi in [1, 10]:
@@ -105,10 +105,10 @@ def vis_parsing_maps(im, style, parsing_anno, stride, save_im=False, save_path='
                                :] = texture[index[0], index[1], :]
         lips_eyes[index[0], index[1], :] = 0
 
-    # hair
-    index = np.where(vis_parsing_anno == 17)
-    vis_parsing_anno_color[index[0], index[1],
-                           :] = texture_hair[index[0], index[1], :]
+    # # hair
+    # index = np.where(vis_parsing_anno == 17)
+    # vis_parsing_anno_color[index[0], index[1],
+    #                        :] = texture_hair[index[0], index[1], :]
 
     vis_parsing_anno_color = vis_parsing_anno_color.astype(np.uint8)
     # print(vis_parsing_anno_color.shape, vis_im.shape)

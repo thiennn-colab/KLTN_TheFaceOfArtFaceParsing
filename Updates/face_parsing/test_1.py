@@ -174,7 +174,7 @@ def vis_parsing_maps(im, style, parsing_anno, stride, save_im=False, save_path='
         #             [int(cv2.IMWRITE_JPEG_QUALITY), 100])
         # cv2.imwrite(save_path[:-4]+"_mask2.jpg", dst,
         #             [int(cv2.IMWRITE_JPEG_QUALITY), 100])
-        return mask1
+        return lips_eyes
 
     # return vis_im
 

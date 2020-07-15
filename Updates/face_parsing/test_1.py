@@ -142,6 +142,8 @@ def vis_parsing_maps(im, style, parsing_anno, stride, save_im=False, save_path='
     vis_im = cv2.addWeighted(cv2.cvtColor(
         vis_im, cv2.COLOR_RGB2BGR), 0, first_mask, 1, 0)
 
+    kernel = np.ones((5,5), np.uint8)
+    lips_eyes = cv2.dilate(lips_eyes, kernel, iterations=1)
     lips_eyes = alpha_blending(vis_im, lips_eyes)
     print(lips_eyes.shape)
     mask1 = lips_eyes

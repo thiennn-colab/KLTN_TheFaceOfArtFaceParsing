@@ -98,17 +98,20 @@ def vis_parsing_maps(im, style, parsing_anno, stride, save_im=False, save_path='
     texture = getTexture('/home/KLTN_TheFaceOfArtFaceParsing/Updates/face_parsing/textures/btexture' + str(style) + '.jpg', (512, 512))
     texture = texture[:,:,::-1]
     lips_eyes = np.ones_like(im).astype(np.uint8)*255
+    kernel = np.ones((5,5), np.uint8)
     # skin 1, nose 10, upper_lip 12, lower-lip 13
-    for pi in [1, 10]:
+    raw_textured = im.copy().astype("uint8")[:, :, ::-1]
+    for pi in [1, 2, 3, 10, 11, 12, 13]:
         index = np.where(vis_parsing_anno == pi)
         vis_parsing_anno_color[index[0], index[1],
                                :] = texture[index[0], index[1], :]
         lips_eyes[index[0], index[1], :] = 0
+        raw_textured[index[0], index[1], :] = texture[index[0], index[1], :]
 
-    # # hair
-    # index = np.where(vis_parsing_anno == 17)
-    # vis_parsing_anno_color[index[0], index[1],
-    #                        :] = texture_hair[index[0], index[1], :]
+    lips_eyes = cv2.dilate(lips_eyes, kernel, iterations=2)
+    for pi in [2, 3, 11, 12, 13]:
+        index = np.where(vis_parsing_anno == pi)
+        lips_eyes[index[0], index[1], :] = 255
 
     vis_parsing_anno_color = vis_parsing_anno_color.astype(np.uint8)
     # print(vis_parsing_anno_color.shape, vis_im.shape)
@@ -142,8 +145,6 @@ def vis_parsing_maps(im, style, parsing_anno, stride, save_im=False, save_path='
     vis_im = cv2.addWeighted(cv2.cvtColor(
         vis_im, cv2.COLOR_RGB2BGR), 0, first_mask, 1, 0)
 
-    kernel = np.ones((5,5), np.uint8)
-    lips_eyes = cv2.dilate(lips_eyes, kernel, iterations=1)
     lips_eyes = alpha_blending(vis_im, lips_eyes)
     print(lips_eyes.shape)
     mask1 = lips_eyes
